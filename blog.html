@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Blog Becoartes - Guia Cultural, Arte e Culinária">
+    <title>Blog - Becoartes</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        body { padding-top: 80px; }
+        
+        /* Blog Header */
+        .blog-header {
+            text-align: center;
+            padding: 4rem 2rem;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        
+        .blog-header h1 {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 1rem;
+        }
+        
+        .blog-header p {
+            color: var(--color-text-muted);
+            font-size: 1.125rem;
+        }
+        
+        /* Blog Grid */
+        .blog-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        
+        /* Blog Card */
+        .blog-card {
+            background: var(--color-surface);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 20px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .blog-card:hover {
+            transform: translateY(-8px);
+            border-color: var(--color-primary);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3), 0 0 30px rgba(157, 78, 221, 0.2);
+        }
+        
+        .blog-card-image {
+            height: 200px;
+            background: linear-gradient(135deg, rgba(157, 78, 221, 0.3), rgba(255, 221, 0, 0.2));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .blog-card-image::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(45deg, transparent 40%, rgba(255,255,255,0.1) 50%, transparent 60%);
+            animation: shine 3s infinite;
+        }
+        
+        @keyframes shine {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
+        }
+        
+        .blog-card-category {
+            position: absolute;
+            top: 1rem;
+            left: 1rem;
+            background: var(--color-primary);
+            color: white;
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+        
+        .blog-card-content {
+            padding: 1.5rem;
+        }
+        
+        .blog-card h3 {
+            font-size: 1.25rem;
+            margin-bottom: 0.75rem;
+            line-height: 1.3;
+            transition: color 0.3s ease;
+        }
+        
+        .blog-card:hover h3 {
+            color: var(--color-primary);
+        }
+        
+        .blog-card p {
+            color: var(--color-text-muted);
+            font-size: 0.9rem;
+            line-height: 1.6;
+            margin-bottom: 1rem;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+        
+        .blog-card-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.8rem;
+            color: var(--color-text-muted);
+            padding-top: 1rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        
+        .blog-card-meta span {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        /* Reading time badge */
+        .read-time {
+            background: rgba(255, 221, 0, 0.2);
+            color: var(--color-secondary);
+            padding: 0.25rem 0.5rem;
+            border-radius: 10px;
+            font-size: 0.7rem;
+            font-weight: 600;
+        }
+        
+        /* Newsletter */
+        .newsletter {
+            max-width: 600px;
+            margin: 4rem auto;
+            padding: 3rem;
+            text-align: center;
+            background: var(--color-surface);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 20px;
+        }
+        
+        .newsletter h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .newsletter-form {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+        
+        .newsletter-form input {
+            flex: 1;
+            padding: 1rem 1.5rem;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            background: rgba(0, 0, 0, 0.3);
+            color: white;
+            font-size: 1rem;
+        }
+        
+        .newsletter-form input:focus {
+            outline: none;
+            border-color: var(--color-primary);
+        }
+        
+        .newsletter-form button {
+            padding: 1rem 2rem;
+            background: var(--color-primary);
+            color: white;
+            border: none;
+            border-radius: 12px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .newsletter-form button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 0 20px var(--color-primary-glow);
+        }
+        
+        @media (max-width: 600px) {
+            .newsletter-form {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Background -->
+    <div class="bg-orb orb-1"></div>
+    <div class="bg-orb orb-2"></div>
+    
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo">
+                <img src="https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=375,fit=crop/YrDWL0by9XCkEn61/logo-oficial-becoartes-A1aPgjperPSlqw6v.png" alt="Becoartes" style="height: 40px; object-fit: contain;">
+            </a>
+            <ul class="nav-links">
+                <li><a href="index.html" class="active">Home</a></li>
+                <li><a href="blog.html" class="active">Blog</a></li>
+                <li><a href="loja.html">Loja</a></li>
+                <li><a href="#reservas" class="btn-reservas">Reservas</a></li>
+            </ul>
+            <div class="hamburger"><span></span><span></span><span></span></div>
+        </div>
+    </nav>
+    
+    <main>
+        <section class="blog-header">
+            <h1>Guia Cultural</h1>
+            <p>Descubra a história, arte e cultura do Beco do Batman e região</p>
+        </section>
+        
+        <section class="blog-grid">
+            <!-- Post 1 -->
+            <article class="blog-card">
+                <div class="blog-card-image">
+                    <span class="blog-card-category">BECO DO BATMAN</span>
+                    🦇
+                </div>
+                <div class="blog-card-content">
+                    <h3>Vale a pena visitar o Beco do Batman à noite?</h3>
+                    <p>Entenda como muda o clima do lugar depois do pôr do sol e o que esperar da experiência noturna na Vila Madalena.</p>
+                    <div class="blog-card-meta">
+                        <span>📅 15/03/2026</span>
+                        <span class="read-time">2 min</span>
+                    </div>
+                </div>
+            </article>
+            
+            <!-- Post 2 -->
+            <article class="blog-card">
+                <div class="blog-card-image">
+                    <span class="blog-card-category">BECO DO BATMAN</span>
+                    🚇
+                </div>
+                <div class="blog-card-content">
+                    <h3>Como Chegar ao Beco do Batman de Transporte Público?</h3>
+                    <p>Veja as maneiras mais fáceis de chegar ao Beco do Batman usando transporte público ou aplicativos em São Paulo.</p>
+                    <div class="blog-card-meta">
+                        <span>📅 15/03/2026</span>
+                        <span class="read-time">2 min</span>
+                    </div>
+                </div>
+            </article>
+            
+            <!-- Post 3 -->
+            <article class="blog-card">
+                <div class="blog-card-image">
+                    <span class="blog-card-category">BECO DO BATMAN</span>
+                    🎪
+                </div>
+                <div class="blog-card-content">
+                    <h3>Quando tem feirinha no Beco do Batman?</h3>
+                    <p>Descubra quando acontece a feirinha no Beco do Batman e como ela faz parte da experiência cultural da Vila Madalena.</p>
+                    <div class="blog-card-meta">
+                        <span>📅 15/03/2026</span>
+                        <span class="read-time">2 min</span>
+                    </div>
+                </div>
+            </article>
+            
+            <!-- Post 4 -->
+            <article class="blog-card">
+                <div class="blog-card-image">
+                    <span class="blog-card-category">BECO DO BATMAN</span>
+                    💧
+                </div>
+                <div class="blog-card-content">
+                    <h3>Por que o Beco do Batman alaga?</h3>
+                    <p>Entenda por que o Beco do Batman às vezes alaga e como a história do antigo Rio Verde influencia as chuvas na região.</p>
+                    <div class="blog-card-meta">
+                        <span>📅 15/03/2026</span>
+                        <span class="read-time">3 min</span>
+                    </div>
+                </div>
+            </article>
+            
+            <!-- Post 5 -->
+            <article class="blog-card">
+                <div class="blog-card-image">
+                    <span class="blog-card-category">HISTÓRIA</span>
+                    🎨
+                </div>
+                <div class="blog-card-content">
+                    <h3>A história do Beco do Batman em São Paulo</h3>
+                    <p>Descubra como um simples beco蟹 became um dos pontos mais icônicos de arte de rua na América Latina.</p>
+                    <div class="blog-card-meta">
+                        <span>📅 14/03/2026</span>
+                        <span class="read-time">5 min</span>
+                    </div>
+                </div>
+            </article>
+            
+            <!-- Post 6 -->
+            <article class="blog-card">
+                <div class="blog-card-image">
+                    <span class="blog-card-category">GASTRONOMIA</span>
+                    🍽️
+                </div>
+                <div class="blog-card-content">
+                    <h3>Melhores restaurantes próximos ao Beco do Batman</h3>
+                    <p>Uma seleção dos melhores lugares para comer e beber na região da Vila Madalena.</p>
+                    <div class="blog-card-meta">
+                        <span>📅 13/03/2026</span>
+                        <span class="read-time">4 min</span>
+                    </div>
+                </div>
+            </article>
+        </section>
+        
+        <section class="newsletter">
+            <h3>📬 Fique por dentro</h3>
+            <p>Receba novidades sobre arte, cultura e gastronomia</p>
+            <form class="newsletter-form">
+                <input type="email" placeholder="Seu e-mail" required>
+                <button type="submit">ASSINAR</button>
+            </form>
+        </section>
+    </main>
+    
+    <footer class="footer">
+        <div class="footer-container glass-panel-dark">
+            <div class="footer-col">
+                <img src="https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=375,fit=crop/YrDWL0by9XCkEn61/logo-oficial-becoartes-A1aPgjperPSlqw6v.png" alt="Becoartes" style="height: 50px; margin-bottom: 15px; filter: drop-shadow(0 0 10px rgba(255,255,255,0.2));">
+                <p>Um pedaço do Brasil servido com afeto, sabores e alma. Do Beco pro mundo. 🌎</p>
+            </div>
+            <div class="footer-col">
+                <h3>Contato</h3>
+                <p>contato@becoartes.com</p>
+                <div class="social-links">
+                    <a href="#">Instagram</a>
+                    <a href="#">Twitter</a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; Becoartes 2025. All rights reserved.</p>
+        </div>
+    </footer>
+    
+    <script src="js/main.js"></script>
+</body>
+</html>

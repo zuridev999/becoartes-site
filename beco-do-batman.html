@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Beco do Batman - O point definitivo de arte urbana na Vila Madalena">
+    <title>Beco do Batman - Becoartes</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        body { padding-top: 80px; }
+        
+        /* Hero Section */
+        .beco-hero {
+            min-height: 60vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 4rem 2rem;
+            position: relative;
+        }
+        
+        .beco-hero h1 {
+            font-size: clamp(2.5rem, 6vw, 5rem);
+            font-weight: 800;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .beco-hero .subtitle {
+            font-size: 1.5rem;
+            color: var(--color-text-muted);
+            margin-bottom: 2rem;
+        }
+        
+        .beco-hero .tagline {
+            font-size: 1.125rem;
+            color: var(--color-text-muted);
+            max-width: 600px;
+        }
+        
+        /* Stats */
+        .beco-stats {
+            display: flex;
+            justify-content: center;
+            gap: 4rem;
+            padding: 3rem 2rem;
+            flex-wrap: wrap;
+        }
+        
+        .beco-stat {
+            text-align: center;
+        }
+        
+        .beco-stat-number {
+            font-size: 3rem;
+            font-weight: 800;
+            color: var(--color-secondary);
+        }
+        
+        .beco-stat-label {
+            color: var(--color-text-muted);
+            font-size: 0.9rem;
+        }
+        
+        /* Content Section */
+        .beco-content {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+        
+        .beco-section {
+            margin-bottom: 4rem;
+        }
+        
+        .beco-section h2 {
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            color: var(--color-primary);
+        }
+        
+        .beco-section p {
+            color: var(--color-text-muted);
+            line-height: 1.8;
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+        }
+        
+        /* Gallery */
+        .beco-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin: 3rem 0;
+        }
+        
+        .beco-gallery-item {
+            aspect-ratio: 1;
+            background: linear-gradient(135deg, rgba(157, 78, 221, 0.3), rgba(255, 221, 0, 0.2));
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .beco-gallery-item:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 30px rgba(157, 78, 221, 0.3);
+        }
+        
+        /* Info Cards */
+        .beco-info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+        
+        .beco-info-card {
+            background: var(--color-surface);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 20px;
+            padding: 2rem;
+            transition: all 0.3s ease;
+        }
+        
+        .beco-info-card:hover {
+            border-color: var(--color-primary);
+            transform: translateY(-5px);
+        }
+        
+        .beco-info-card h3 {
+            font-size: 1.25rem;
+            margin-bottom: 1rem;
+            color: var(--color-secondary);
+        }
+        
+        .beco-info-card p {
+            color: var(--color-text-muted);
+            font-size: 0.95rem;
+        }
+        
+        /* Map */
+        .beco-map {
+            width: 100%;
+            height: 400px;
+            background: var(--color-surface);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 3rem 0;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        
+        .beco-map span {
+            font-size: 4rem;
+            opacity: 0.5;
+        }
+        
+        /* CTA */
+        .beco-cta {
+            text-align: center;
+            padding: 4rem 2rem;
+            background: linear-gradient(135deg, rgba(157, 78, 221, 0.1), rgba(255, 221, 0, 0.1));
+            border-radius: 20px;
+            margin: 3rem 0;
+        }
+        
+        .beco-cta h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .beco-cta p {
+            color: var(--color-text-muted);
+            margin-bottom: 2rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="bg-orb orb-1"></div>
+    <div class="bg-orb orb-2"></div>
+    
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo">
+                <img src="https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=375,fit=crop/YrDWL0by9XCkEn61/logo-oficial-becoartes-A1aPgjperPSlqw6v.png" alt="Becoartes" style="height: 40px; object-fit: contain;">
+            </a>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="beco-do-batman.html" class="active">Beco do Batman</a></li>
+                <li><a href="blog.html">Blog</a></li>
+                <li><a href="loja.html">Loja</a></li>
+                <li><a href="#reservas" class="btn-reservas">Reservas</a></li>
+            </ul>
+            <div class="hamburger"><span></span><span></span><span></span></div>
+        </div>
+    </nav>
+    
+    <main>
+        <!-- Hero -->
+        <section class="beco-hero">
+            <h1>🦇 BECO DO BATMAN</h1>
+            <p class="subtitle">O Point da Vila Madalena</p>
+            <p class="tagline">O point definitivo de arte urbana em São Paulo. Um Beco que se transformou em ícone cultural.</p>
+        </section>
+        
+        <!-- Stats -->
+        <section class="beco-stats">
+            <div class="beco-stat">
+                <div class="beco-stat-number">700+</div>
+                <div class="beco-stat-label">Avaliações Google</div>
+            </div>
+            <div class="beco-stat">
+                <div class="beco-stat-number">50+</div>
+                <div class="beco-stat-label">Grafites</div>
+            </div>
+            <div class="beco-stat">
+                <div class="beco-stat-number">24h</div>
+                <div class="beco-stat-label">Aberto sempre</div>
+            </div>
+        </section>
+        
+        <!-- About -->
+        <section class="beco-content">
+            <div class="beco-section">
+                <h2>🎨 História do Beco</h2>
+                <p>O Beco do Batman, localizado na Vila Madalena, é um dos pontos mais icônicos de arte urbana da América Latina. O que começou como um simple beco蟹 se transformou em uma galeria a céu aberto, com grafites de artistas de todo o mundo.</p>
+                <p>O nome "Beco do Batman" surgiu naturalmente, já que os murais escuros e sombrios lembravam o universo do personagem da DC Comics. Hoje, é ponto turístico obrigatório para quem visita São Paulo.</p>
+            </div>
+            
+            <!-- Gallery -->
+            <div class="beco-gallery">
+                <div class="beco-gallery-item">🦇</div>
+                <div class="beco-gallery-item">🎨</div>
+                <div class="beco-gallery-item">🖌️</div>
+                <div class="beco-gallery-item">🌙</div>
+            </div>
+            
+            <!-- Info Cards -->
+            <div class="beco-info-grid">
+                <div class="beco-info-card">
+                    <h3>📍 Localização</h3>
+                    <p>Rua Harmonia, Vila Madalena - São Paulo, SP. A 5 min da Estação Sumaré do metrô.</p>
+                </div>
+                <div class="beco-info-card">
+                    <h3>⏰ Horário</h24>
+                    <p>Aberto 24 horas. O melhor horário para visitação é ao anoitecer, quando a iluminação destaca os murais.</p>
+                </div>
+                <div class="beco-info-card">
+                    <h3>🎟️ Entrada</h3>
+                    <p>Gratuito! O beco é aberto ao público. Não tem taxa de entrada.</p>
+                </div>
+                <div class="beco-info-card">
+                    <h3>📸 Instagram</h3>
+                    <p>Não deixe de marcar @becoartes nas suas fotos! Usamos as melhores em nosso perfil.</p>
+                </div>
+            </div>
+            
+            <!-- Map -->
+            <div class="beco-map">
+                <span>🗺️</span>
+            </div>
+            
+            <!-- CTA -->
+            <div class="beco-cta">
+                <h2>🎉 Experiência Completa</h2>
+                <p>Combine sua visita ao Beco do Batman com uma experiência gastronômica no Becoartes</p>
+                <a href="#reservas" class="btn btn-primary">FAZER RESERVA</a>
+            </div>
+        </section>
+    </main>
+    
+    <footer class="footer">
+        <div class="footer-container glass-panel-dark">
+            <div class="footer-col">
+                <img src="https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=375,fit=crop/YrDWL0by9XCkEn61/logo-oficial-becoartes-A1aPgjperPSlqw6v.png" alt="Becoartes" style="height: 50px; margin-bottom: 15px; filter: drop-shadow(0 0 10px rgba(255,255,255,0.2));">
+                <p>Um pedaço do Brasil servido com afeto, sabores e alma. Do Beco pro mundo. 🌎</p>
+            </div>
+            <div class="footer-col">
+                <h3>Contato</h3>
+                <p>contato@becoartes.com</p>
+                <div class="social-links">
+                    <a href="#">Instagram</a>
+                    <a href="#">Twitter</a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; Becoartes 2025. All rights reserved.</p>
+        </div>
+    </footer>
+    
+    <script src="js/main.js"></script>
+</body>
+</html>
