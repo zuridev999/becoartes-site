@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Becoartes - Experiência 3D Imersiva">
+    <meta name="description" content="Becoartes - Experiência 3D Brutal">
     <title>Experiência 3D - Becoartes</title>
     <script src="https://unpkg.com/@splinetool/viewer@1.0.54/build/spline-viewer.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800;900&display=swap" rel="stylesheet">
@@ -15,416 +15,392 @@
         }
         
         :root {
-            --color-bg: #0a0a0f;
-            --color-primary: #9d4edd;
-            --color-secondary: #ffdd00;
-            --color-cyan: #00f5ff;
-            --color-pink: #ff006e;
-            --color-orange: #ff9500;
+            --bg: #0a0a0f;
+            --primary: #9d4edd;
+            --secondary: #ffdd00;
+            --cyan: #00f5ff;
+            --pink: #ff006e;
+            --orange: #ff9500;
+            --green: #00ff88;
+            --red: #ff3333;
         }
         
         body {
             font-family: 'Outfit', sans-serif;
-            background: var(--color-bg);
+            background: var(--bg);
             color: white;
-            overflow: hidden;
-            cursor: none;
+            overflow-x: hidden;
+            cursor: crosshair;
         }
         
-        /* Custom Cursor */
-        .cursor {
-            width: 20px;
-            height: 20px;
-            border: 2px solid var(--color-cyan);
-            border-radius: 50%;
+        /* Brutalist Cursor */
+        body::before {
+            content: '';
             position: fixed;
-            pointer-events: none;
-            z-index: 9999;
-            transition: transform 0.1s ease;
-            mix-blend-mode: difference;
-        }
-        
-        .cursor-dot {
-            width: 6px;
-            height: 6px;
-            background: var(--color-secondary);
-            border-radius: 50%;
-            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                repeating-linear-gradient(
+                    0deg,
+                    transparent,
+                    transparent 2px,
+                    rgba(255, 255, 255, 0.03) 2px,
+                    rgba(255, 255, 255, 0.03) 4px
+                );
             pointer-events: none;
             z-index: 9999;
         }
         
-        /* Trail effect */
-        .cursor-trail {
-            position: fixed;
-            width: 10px;
-            height: 10px;
-            background: var(--color-primary);
-            border-radius: 50%;
-            pointer-events: none;
-            z-index: 9998;
-            opacity: 0.5;
-            animation: trail 0.5s ease-out forwards;
+        /* Glitch Effect */
+        @keyframes glitch {
+            0% { transform: translate(0); }
+            20% { transform: translate(-2px, 2px); }
+            40% { transform: translate(-2px, -2px); }
+            60% { transform: translate(2px, 2px); }
+            80% { transform: translate(2px, -2px); }
+            100% { transform: translate(0); }
         }
         
-        @keyframes trail {
-            to {
-                transform: scale(0);
-                opacity: 0;
-            }
+        @keyframes rgbShift {
+            0% { text-shadow: -2px 0 #ff0000, 2px 0 #00ffff; }
+            50% { text-shadow: 2px 0 #ff0000, -2px 0 #00ffff; }
+            100% { text-shadow: -2px 0 #ff0000, 2px 0 #00ffff; }
         }
         
-        /* Hero Section */
-        .hero3d {
+        /* Hero Brutal */
+        .hero-brutal {
             height: 100vh;
             display: flex;
+            flex-direction: column;
             align-items: center;
             justify-content: center;
             position: relative;
+            background: 
+                radial-gradient(circle at 30% 30%, rgba(157, 78, 221, 0.4) 0%, transparent 50%),
+                radial-gradient(circle at 70% 70%, rgba(255, 221, 0, 0.3) 0%, transparent 50%),
+                repeating-linear-gradient(45deg, transparent, transparent 10px, rgba(255,255,255,0.02) 10px, rgba(255,255,255,0.02) 20px),
+                var(--bg);
         }
         
-        .hero3d::before {
+        .hero-brutal::after {
             content: '';
             position: absolute;
             top: 0;
             left: 0;
             right: 0;
             bottom: 0;
-            background: 
-                radial-gradient(circle at 20% 80%, rgba(157, 78, 221, 0.3) 0%, transparent 50%),
-                radial-gradient(circle at 80% 20%, rgba(255, 221, 0, 0.2) 0%, transparent 50%),
-                radial-gradient(circle at 50% 50%, rgba(0, 245, 255, 0.1) 0%, transparent 70%);
-            animation: pulse 8s ease-in-out infinite;
-        }
-        
-        @keyframes pulse {
-            0%, 100% { opacity: 0.5; }
-            50% { opacity: 1; }
-        }
-        
-        .spline-container {
-            width: 100%;
-            height: 80%;
-            position: relative;
-            z-index: 1;
-        }
-        
-        spline-viewer {
-            width: 100%;
-            height: 100%;
-        }
-        
-        .hero-content {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            text-align: center;
-            z-index: 2;
+            background: repeating-linear-gradient(
+                90deg,
+                transparent,
+                transparent 50px,
+                rgba(255, 0, 0, 0.1) 50px,
+                rgba(255, 0, 0, 0.1) 51px
+            );
             pointer-events: none;
         }
         
-        .hero-content h1 {
-            font-size: 5rem;
+        .brutal-title {
+            font-size: clamp(4rem, 15vw, 12rem);
             font-weight: 900;
-            background: linear-gradient(135deg, #fff 0%, var(--color-cyan) 50%, var(--color-pink) 100%);
+            text-transform: uppercase;
+            line-height: 0.85;
+            position: relative;
+            z-index: 10;
+            animation: rgbShift 0.5s infinite;
+            mix-blend-mode: difference;
+        }
+        
+        .brutal-title span {
+            display: block;
+            background: linear-gradient(90deg, #fff, var(--cyan), var(--pink), var(--orange), #fff);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            background-clip: text;
-            text-shadow: 0 0 50px rgba(0, 245, 255, 0.5);
-            animation: glitch 3s infinite;
+            background-size: 200% auto;
+            animation: gradientMove 3s linear infinite;
         }
         
-        @keyframes glitch {
-            0%, 90%, 100% { transform: translate(0); }
-            92% { transform: translate(-5px, 2px); }
-            94% { transform: translate(5px, -2px); }
-            96% { transform: translate(-3px, -1px); }
-            98% { transform: translate(3px, 1px); }
+        @keyframes gradientMove {
+            to { background-position: 200% center; }
         }
         
-        .hero-content p {
+        .brutal-subtitle {
             font-size: 1.5rem;
-            color: rgba(255, 255, 255, 0.8);
-            margin-top: 1rem;
-            letter-spacing: 0.2em;
+            letter-spacing: 0.5em;
+            margin-top: 2rem;
+            color: var(--cyan);
+            text-transform: uppercase;
+            font-weight: 300;
         }
         
-        /* Floating elements */
-        .float-element {
+        /* Brutal Menu */
+        .brutal-menu {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            display: flex;
+            justify-content: space-between;
+            padding: 1.5rem 2rem;
+            background: rgba(0, 0, 0, 0.9);
+            border-bottom: 3px solid var(--primary);
+            z-index: 100;
+            backdrop-filter: blur(10px);
+        }
+        
+        .brutal-menu .logo {
+            font-size: 1.5rem;
+            font-weight: 900;
+            color: var(--secondary);
+            text-decoration: none;
+        }
+        
+        .brutal-menu nav {
+            display: flex;
+            gap: 2rem;
+        }
+        
+        .brutal-menu a {
+            color: white;
+            text-decoration: none;
+            font-weight: 700;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            padding: 0.5rem 1rem;
+            border: 2px solid transparent;
+            transition: all 0.1s;
+        }
+        
+        .brutal-menu a:hover {
+            border: 2px solid var(--cyan);
+            background: var(--cyan);
+            color: #000;
+            box-shadow: 4px 4px 0 var(--primary);
+        }
+        
+        /* Floating Brutal Elements */
+        .brutal-float {
             position: absolute;
-            border-radius: 50%;
-            filter: blur(60px);
-            animation: float 10s ease-in-out infinite;
+            border: 3px solid;
+            animation: floatBrutal 8s ease-in-out infinite;
         }
         
-        .float-1 {
-            width: 300px;
-            height: 300px;
-            background: var(--color-primary);
-            top: 10%;
+        .brutal-float-1 {
+            width: 200px;
+            height: 200px;
+            border-color: var(--primary);
+            top: 15%;
             left: 10%;
             animation-delay: 0s;
+            transform: rotate(15deg);
         }
         
-        .float-2 {
-            width: 250px;
-            height: 250px;
-            background: var(--color-secondary);
+        .brutal-float-2 {
+            width: 150px;
+            height: 150px;
+            border-color: var(--secondary);
             bottom: 20%;
             right: 15%;
             animation-delay: -3s;
+            transform: rotate(-20deg);
         }
         
-        .float-3 {
-            width: 200px;
-            height: 200px;
-            background: var(--color-cyan);
-            top: 50%;
-            right: 30%;
-            animation-delay: -6s;
+        .brutal-float-3 {
+            width: 100px;
+            height: 100px;
+            border-color: var(--cyan);
+            top: 40%;
+            right: 25%;
+            animation-delay: -5s;
+            transform: rotate(45deg);
         }
         
-        @keyframes float {
-            0%, 100% { transform: translate(0, 0) scale(1); }
-            33% { transform: translate(30px, -30px) scale(1.1); }
-            66% { transform: translate(-20px, 20px) scale(0.9); }
+        @keyframes floatBrutal {
+            0%, 100% { transform: rotate(15deg) translate(0, 0); }
+            33% { transform: rotate(20deg) translate(20px, -20px); }
+            66% { transform: rotate(10deg) translate(-20px, 20px); }
         }
         
-        /* Menu */
-        .menu3d {
+        /* Cards Brutal */
+        .brutal-cards {
             position: fixed;
-            top: 2rem;
-            right: 2rem;
-            z-index: 100;
-            display: flex;
-            gap: 1rem;
-        }
-        
-        .menu3d a {
-            color: white;
-            text-decoration: none;
-            padding: 0.8rem 1.5rem;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 30px;
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            transition: all 0.3s ease;
-            font-weight: 600;
-        }
-        
-        .menu3d a:hover {
-            background: var(--color-primary);
-            border-color: var(--color-primary);
-            transform: scale(1.05);
-        }
-        
-        /* Logo */
-        .logo3d {
-            position: fixed;
-            top: 2rem;
-            left: 2rem;
-            z-index: 100;
-        }
-        
-        .logo3d img {
-            height: 50px;
-        }
-        
-        /* Instructions */
-        .instructions {
-            position: fixed;
-            bottom: 2rem;
-            left: 50%;
-            transform: translateX(-50%);
-            color: rgba(255, 255, 255, 0.5);
-            font-size: 0.9rem;
-            z-index: 100;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-        
-        .instructions span {
-            display: inline-block;
-            width: 30px;
-            height: 30px;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 50%;
-            text-align: center;
-            line-height: 30px;
-            font-size: 0.8rem;
-        }
-        
-        /* Interactive 3D Cards */
-        .cards-container {
-            position: fixed;
-            bottom: 5rem;
+            bottom: 3rem;
             left: 50%;
             transform: translateX(-50%);
             display: flex;
-            gap: 2rem;
+            gap: 1.5rem;
             z-index: 10;
         }
         
-        .card3d {
-            width: 150px;
-            height: 200px;
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 20px;
-            backdrop-filter: blur(10px);
+        .brutal-card {
+            width: 120px;
+            height: 120px;
+            background: #000;
+            border: 3px solid var(--primary);
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
             cursor: pointer;
-            transition: all 0.3s ease;
-            perspective: 1000px;
+            transition: all 0.1s;
+            position: relative;
+            overflow: hidden;
         }
         
-        .card3d:hover {
-            transform: translateY(-20px) rotateX(10deg);
-            background: rgba(255, 255, 255, 0.1);
-            border-color: var(--color-cyan);
-            box-shadow: 0 20px 40px rgba(0, 245, 255, 0.3);
+        .brutal-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: left 0.5s;
         }
         
-        .card3d .icon {
-            font-size: 3rem;
-            margin-bottom: 1rem;
+        .brutal-card:hover::before {
+            left: 100%;
         }
         
-        .card3d h4 {
+        .brutal-card:hover {
+            transform: translateY(-15px) rotate(-5deg);
+            box-shadow: 8px 8px 0 var(--cyan);
+            border-color: var(--cyan);
+        }
+        
+        .brutal-card .icon { font-size: 2.5rem; }
+        
+        .brutal-card .label {
+            font-size: 0.7rem;
+            font-weight: 900;
+            text-transform: uppercase;
+            margin-top: 0.5rem;
+        }
+        
+        /* Instructions */
+        .brutal-instruct {
+            position: fixed;
+            bottom: 1.5rem;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #000;
+            border: 2px solid var(--orange);
+            padding: 0.8rem 2rem;
+            font-family: monospace;
             font-size: 0.9rem;
-            color: var(--color-cyan);
+            color: var(--orange);
+            z-index: 100;
+        }
+        
+        /* Spline container */
+        .spline-brutal {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 60%;
+            height: 60%;
+            z-index: 1;
+            opacity: 0.6;
+        }
+        
+        /* Mobile */
+        @media (max-width: 768px) {
+            .brutal-title { font-size: 3rem; }
+            .brutal-menu { flex-direction: column; gap: 1rem; }
+            .brutal-menu nav { flex-wrap: wrap; }
+            .brutal-cards { flex-wrap: wrap; width: 90%; justify-content: center; }
         }
     </style>
 </head>
 <body>
-    <!-- Custom Cursor -->
-    <div class="cursor"></div>
-    <div class="cursor-dot"></div>
-    
-    <!-- Floating Background Elements -->
-    <div class="float-element float-1"></div>
-    <div class="float-element float-2"></div>
-    <div class="float-element float-3"></div>
-    
-    <!-- Logo -->
-    <div class="logo3d">
-        <a href="index.html">
-            <img src="https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=375,fit=crop/YrDWL0by9XCkEn61/logo-oficial-becoartes-A1aPgjperPSlqw6v.png" alt="Becoartes">
-        </a>
-    </div>
-    
     <!-- Menu -->
-    <nav class="menu3d">
-        <a href="index.html">Home</a>
-        <a href="cardapio.html">Cardápio</a>
-        <a href="loja.html">Loja</a>
-        <a href="blog.html">Guia Cultural</a>
+    <nav class="brutal-menu">
+        <a href="index.html" class="logo">BECOARTES</a>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="cardapio.html">Cardápio</a>
+            <a href="loja.html">Loja</a>
+            <a href="blog.html">Guia</a>
+        </nav>
     </nav>
     
-    <!-- Hero 3D -->
-    <section class="hero3d">
-        <div class="spline-container">
-            <!-- Spline Viewer - Using a community scene -->
+    <!-- Hero -->
+    <section class="hero-brutal">
+        <div class="spline-brutal">
             <spline-viewer url="https://prod.spline.design/6Wq1Q7YGyM-iab9i/scene.splinecode"></spline-viewer>
         </div>
         
-        <div class="hero-content">
-            <h1>BECOARTES</h1>
-            <p>Uma experiência imersiva</p>
-        </div>
+        <h1 class="brutal-title">
+            <span>BECO</span>
+            <span>ARTES</span>
+        </h1>
         
-        <!-- Interactive Cards -->
-        <div class="cards-container">
-            <div class="card3d">
+        <p class="brutal-subtitle">Experiência brutal</p>
+        
+        <!-- Floating elements -->
+        <div class="brutal-float brutal-float-1"></div>
+        <div class="brutal-float brutal-float-2"></div>
+        <div class="brutal-float brutal-float-3"></div>
+        
+        <!-- Cards -->
+        <div class="brutal-cards">
+            <div class="brutal-card">
                 <span class="icon">🎨</span>
-                <h4>Arte</h4>
+                <span class="label">Arte</span>
             </div>
-            <div class="card3d">
+            <div class="brutal-card">
                 <span class="icon">🍽️</span>
-                <h4>Gastronomia</h4>
+                <span class="label">Comida</span>
             </div>
-            <div class="card3d">
+            <div class="brutal-card">
                 <span class="icon">🎵</span>
-                <h4>Cultura</h4>
+                <span class="label">Cultura</span>
             </div>
-            <div class="card3d">
+            <div class="brutal-card">
                 <span class="icon">📍</span>
-                <h4>Visite</h4>
+                <span class="label">Vila</span>
             </div>
         </div>
     </section>
     
-    <!-- Instructions -->
-    <div class="instructions">
-        <span>🖱️</span> Mova o mouse para interagir
+    <div class="brutal-instruct">
+        [ MOUSE MOVE TO INTERACT ] /// [ CLICK TO SELECT ] /// [ SCROLL TO NAVIGATE ]
     </div>
     
     <script>
-        // Custom Cursor
-        const cursor = document.querySelector('.cursor');
-        const cursorDot = document.querySelector('.cursor-dot');
-        let mouseX = 0, mouseY = 0;
-        let cursorX = 0, cursorY = 0;
-        
+        // Brutal cursor effect
         document.addEventListener('mousemove', (e) => {
-            mouseX = e.clientX;
-            mouseY = e.clientY;
+            const x = e.clientX;
+            const y = e.clientY;
             
-            // Create trail
-            const trail = document.createElement('div');
-            trail.className = 'cursor-trail';
-            trail.style.left = mouseX + 'px';
-            trail.style.top = mouseY + 'px';
-            document.body.appendChild(trail);
-            setTimeout(() => trail.remove(), 500);
+            // Create massive trail
+            for(let i = 0; i < 3; i++) {
+                const trail = document.createElement('div');
+                trail.style.cssText = `
+                    position: fixed;
+                    left: ${x + (Math.random() - 0.5) * 50}px;
+                    top: ${y + (Math.random() - 0.5) * 50}px;
+                    width: ${Math.random() * 30 + 10}px;
+                    height: ${Math.random() * 30 + 10}px;
+                    background: hsl(${Math.random() * 360}, 100%, 50%);
+                    opacity: 0.3;
+                    pointer-events: none;
+                    z-index: 9998;
+                `;
+                document.body.appendChild(trail);
+                setTimeout(() => trail.remove(), 300);
+            }
         });
         
-        // Smooth cursor movement
-        function animateCursor() {
-            cursorX += (mouseX - cursorX) * 0.1;
-            cursorY += (mouseY - cursorY) * 0.1;
-            
-            cursor.style.left = cursorX - 10 + 'px';
-            cursor.style.top = cursorY - 10 + 'px';
-            cursorDot.style.left = mouseX - 3 + 'px';
-            cursorDot.style.top = mouseY - 3 + 'px';
-            
-            requestAnimationFrame(animateCursor);
-        }
-        animateCursor();
-        
-        // 3D Tilt for cards
-        document.querySelectorAll('.card3d').forEach(card => {
-            card.addEventListener('mousemove', (e) => {
-                const rect = card.getBoundingClientRect();
-                const x = e.clientX - rect.left;
-                const y = e.clientY - rect.top;
-                const centerX = rect.width / 2;
-                const centerY = rect.height / 2;
-                
-                const rotateX = (y - centerY) / 10;
-                const rotateY = (centerX - x) / 10;
-                
-                card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-20px)`;
-            });
-            
-            card.addEventListener('mouseleave', () => {
-                card.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) translateY(0)';
-            });
-        });
-        
-        // Click effect
+        // Click brutal effect
         document.addEventListener('click', () => {
-            cursor.style.transform = 'scale(0.5)';
-            setTimeout(() => cursor.style.transform = 'scale(1)', 100);
+            document.body.style.animation = 'glitch 0.1s';
+            setTimeout(() => document.body.style.animation = '', 100);
         });
         
-        console.log('🎨 Becoartes 3D Experience Loaded');
+        console.log('⚡ BECOARTES BRUTAL MODE ACTIVATED');
     </script>
 </body>
 </html>

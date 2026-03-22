@@ -25,7 +25,6 @@
             min-height: 100vh;
         }
 
-        /* Navbar */
         .navbar {
             padding: 1rem 2rem;
             display: flex;
@@ -39,9 +38,7 @@
             z-index: 100;
         }
         
-        .navbar .logo img {
-            height: 40px;
-        }
+        .navbar .logo img { height: 40px; }
         
         .nav-links {
             display: flex;
@@ -60,11 +57,8 @@
             color: var(--secondary);
         }
         
-        main {
-            padding-top: 80px;
-        }
+        main { padding-top: 80px; }
         
-        /* Header */
         .header-section {
             text-align: center;
             padding: 80px 20px 40px;
@@ -82,116 +76,70 @@
             margin-bottom: 10px;
         }
         
-        .header-section p {
-            color: var(--text-muted);
-            font-size: 1.2rem;
-        }
+        .header-section p { color: var(--text-muted); font-size: 1.2rem; }
         
-        /* Menu Section */
-        .menu-section {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 40px 20px 60px;
-        }
+        .menu-section { max-width: 1000px; margin: 0 auto; padding: 40px 20px 60px; }
         
-        .menu-category {
-            margin-bottom: 60px;
-        }
+        .menu-category { margin-bottom: 60px; }
         
         .menu-category h2 {
-            font-size: 28px;
+            font-size: 32px;
             font-weight: 700;
             color: var(--secondary);
-            margin-bottom: 30px;
+            margin-bottom: 20px;
             padding-bottom: 15px;
             border-bottom: 2px solid rgba(255, 221, 0, 0.3);
-            display: flex;
-            align-items: center;
-            gap: 1rem;
         }
         
-        .menu-grid {
+        .menu-category .subtitle {
+            color: var(--text-muted);
+            font-size: 1.1rem;
+            margin-bottom: 30px;
+            font-style: italic;
+        }
+        
+        .prato-especial {
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 20px;
+            padding: 30px;
+            margin-bottom: 30px;
+        }
+        
+        .prato-especial h3 {
+            font-size: 1.8rem;
+            color: var(--primary);
+            margin-bottom: 15px;
+        }
+        
+        .prato-especial .descricao {
+            color: var(--text-muted);
+            line-height: 1.8;
+            font-size: 1.1rem;
+        }
+        
+        .prato-especial .tag {
+            display: inline-block;
+            background: var(--secondary);
+            color: #000;
+            padding: 8px 20px;
+            border-radius: 25px;
+            font-weight: 700;
+            margin-top: 15px;
+            font-size: 0.9rem;
+        }
+        
+        .drinks-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
             gap: 25px;
         }
         
-        .menu-item {
+        .drink-item {
             padding: 25px;
             background: rgba(255,255,255,0.03);
             border: 1px solid rgba(255,255,255,0.08);
             border-radius: 16px;
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .menu-item::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 4px;
-            height: 100%;
-            background: var(--primary);
-            opacity: 0;
-            transition: opacity 0.3s;
-        }
-        
-        .menu-item:hover {
-            background: rgba(255,255,255,0.06);
-            transform: translateY(-5px);
-            box-shadow: 0 15px 40px rgba(157, 78, 221, 0.15);
-        }
-        
-        .menu-item:hover::before {
-            opacity: 1;
-        }
-        
-        .menu-item .dish {
-            font-size: 18px;
-            font-weight: 600;
-            margin-bottom: 8px;
-            color: var(--text);
-        }
-        
-        .menu-item .description {
-            font-size: 14px;
-            color: var(--text-muted);
-            margin-bottom: 12px;
-        }
-        
-        .menu-item .price {
-            font-size: 20px;
-            font-weight: 700;
-            color: var(--secondary);
-        }
-        
-        .menu-item .tag {
-            position: absolute;
-            top: 15px;
-            right: 15px;
-            background: var(--primary);
-            color: white;
-            padding: 4px 12px;
-            border-radius: 20px;
-            font-size: 11px;
-            font-weight: 600;
-            text-transform: uppercase;
-        }
-        
-        /* Drinks Grid */
-        .drinks-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-            gap: 20px;
-        }
-        
-        .drink-item {
-            padding: 20px;
-            background: rgba(255,255,255,0.03);
-            border: 1px solid rgba(255,255,255,0.08);
-            border-radius: 12px;
             text-align: center;
             transition: all 0.3s ease;
         }
@@ -201,22 +149,48 @@
             transform: scale(1.02);
         }
         
-        .drink-item .icon {
-            font-size: 2.5rem;
+        .drink-item .icon { font-size: 3rem; margin-bottom: 15px; }
+        
+        .drink-item .name {
+            font-weight: 700;
+            font-size: 1.2rem;
+            margin-bottom: 8px;
+        }
+        
+        .drink-item .desc {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+        
+        .porcoes-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 25px;
+        }
+        
+        .porcao-item {
+            padding: 25px;
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 16px;
+            transition: all 0.3s ease;
+        }
+        
+        .porcao-item:hover {
+            background: rgba(255,255,255,0.06);
+            transform: translateY(-5px);
+        }
+        
+        .porcao-item h4 {
+            color: var(--text);
+            font-size: 1.3rem;
             margin-bottom: 10px;
         }
         
-        .drink-item .name {
-            font-weight: 600;
-            margin-bottom: 5px;
+        .porcao-item p {
+            color: var(--text-muted);
         }
         
-        .drink-item .price {
-            color: var(--secondary);
-            font-weight: 700;
-        }
-        
-        /* CTA Section */
         .cta-section {
             text-align: center;
             padding: 80px 20px;
@@ -243,7 +217,6 @@
             color: #000;
         }
         
-        /* Footer */
         footer {
             text-align: center;
             padding: 40px 20px;
@@ -252,15 +225,9 @@
             font-size: 14px;
         }
         
-        /* Responsive */
         @media (max-width: 768px) {
-            .header-section h1 {
-                font-size: 42px;
-            }
-            
-            .nav-links {
-                display: none;
-            }
+            .header-section h1 { font-size: 42px; }
+            .nav-links { display: none; }
         }
     </style>
 </head>
@@ -281,132 +248,86 @@
     <main>
         <div class="header-section">
             <h1>🍽️ Cardápio</h1>
-            <p>Sabores autênticos da culinária nordestina</p>
+            <p>Explore nosso cardápio e descubra o sabor do Brasil com arte</p>
         </div>
         
         <div class="menu-section">
-            <!-- Pratos Principais -->
+            <!-- Porções -->
             <div class="menu-category">
-                <h2>🥘 Pratos Principais</h2>
-                <div class="menu-grid">
-                    <div class="menu-item">
-                        <span class="tag">Mais Pedido</span>
-                        <div class="dish">Baião de Dois</div>
-                        <div class="description">Arroz, feijão verde, coalho, bacon e charque</div>
-                        <div class="price">R$ 42,90</div>
+                <h2>🥟 Porções</h2>
+                <p class="subtitle">Porções feitas sob medida para seu gosto</p>
+                <div class="porcoes-grid">
+                    <div class="porcao-item">
+                        <h4>Porção de Bolinho</h4>
+                        <p>Servido com molho especial</p>
                     </div>
-                    <div class="menu-item">
-                        <div class="dish">Espeto de Mignon</div>
-                        <div class="description">Carnes nobres grelhadas com acompanhamento</div>
-                        <div class="price">R$ 49,90</div>
+                    <div class="porcao-item">
+                        <h4>Batata Frita</h4>
+                        <p>Batata crocante</p>
                     </div>
-                    <div class="menu-item">
-                        <span class="tag">Especial</span>
-                        <div class="dish">Costela no Bafo</div>
-                        <div class="description">Costela assada por 8h, acompañada de farofa</div>
-                        <div class="price">R$ 69,90</div>
+                    <div class="porcao-item">
+                        <h4>Mandioca Frita</h4>
+                        <p>Com chimichurri</p>
                     </div>
-                    <div class="menu-item">
-                        <div class="dish">Macaxeira Recheada</div>
-                        <div class="description">Macaxeira com carne seca e queijo</div>
-                        <div class="price">R$ 38,90</div>
-                    </div>
-                    <div class="menu-item">
-                        <div class="dish">Frango Caipira</div>
-                        <div class="description">Frango caipira com arroz de leite</div>
-                        <div class="price">R$ 39,90</div>
-                    </div>
-                    <div class="menu-item">
-                        <div class="dish">Carne de Sol</div>
-                        <div class="description">Carne de sol com batatas e onion rings</div>
-                        <div class="price">R$ 52,90</div>
+                    <div class="porcao-item">
+                        <h4>Tábua de Frios</h4>
+                        <p>Queijos e embutidos</p>
                     </div>
                 </div>
             </div>
             
-            <!-- Porções -->
+            <!-- Pratos Especiais -->
             <div class="menu-category">
-                <h2>🍟 Porções</h2>
-                <div class="menu-grid">
-                    <div class="menu-item">
-                        <div class="dish">Porção de Bolinho</div>
-                        <div class="description">8 unidades - carne ou queijo</div>
-                        <div class="price">R$ 24,90</div>
-                    </div>
-                    <div class="menu-item">
-                        <div class="dish">Batata Frita</div>
-                        <div class="description">Batata crocante com garlic aioli</div>
-                        <div class="price">R$ 22,90</div>
-                    </div>
-                    <div class="menu-item">
-                        <div class="dish">Mandioca Frita</div>
-                        <div class="description">Mandioca crocante com chimichurri</div>
-                        <div class="price">R$ 19,90</div>
-                    </div>
-                    <div class="menu-item">
-                        <div class="dish">Tábua de Frios</div>
-                        <div class="description">Queijos, embutidos e grapes</div>
-                        <div class="price">R$ 59,90</div>
-                    </div>
+                <h2>🍖 Pratos Especiais</h2>
+                <p class="subtitle">Preparados com o melhor dos sabores e um toque de arte</p>
+                
+                <div class="prato-especial">
+                    <h3>🥘 Feijoada aos fins de semana</h3>
+                    <p class="descricao">"Todo final de semana, a tradição da feijoada ganha um toque especial no Becoartes. Prepare-se para saborear essa iguaria brasileira, feita com ingredientes frescos e tempero caseiro, para deixar o seu fim de semana ainda mais saboroso."</p>
+                    <span class="tag">Sábados e Domingos</span>
+                </div>
+                
+                <div class="prato-especial">
+                    <h3>🥬 Veggie Burguer Becoartes</h3>
+                    <p class="descricao">"Nosso Veggie Burguer Becoartes é pra todo mundo que ama comer bem, com consciência e muito sabor! Feito com um blend artesanal de feijão temperado, servido no pão de brioche macio e finalizado com acompanhamentos que equilibram textura e frescor, esse burger é leve, suculento e 100% cheio de personalidade."</p>
+                    <span class="tag">Vegetariano</span>
                 </div>
             </div>
             
             <!-- Bebidas -->
             <div class="menu-category">
                 <h2>🍺 Bebidas</h2>
+                <p class="subtitle">O melhor do mundo das cervejas e drinks</p>
                 <div class="drinks-grid">
                     <div class="drink-item">
                         <div class="icon">🍸</div>
                         <div class="name">Caipirinha</div>
-                        <div class="price">R$ 18,90</div>
+                        <div class="desc">Tradicional brasileira</div>
                     </div>
                     <div class="drink-item">
                         <div class="icon">🍺</div>
                         <div class="name">Cerveja Latão</div>
-                        <div class="price">R$ 12,90</div>
+                        <div class="desc">Gelada e trincando</div>
                     </div>
                     <div class="drink-item">
                         <div class="icon">🍷</div>
                         <div class="name">Vinho Nacional</div>
-                        <div class="price">R$ 28,90</div>
+                        <div class="desc">Seleção brasileira</div>
                     </div>
                     <div class="drink-item">
                         <div class="icon">🥤</div>
                         <div class="name">Suco Natural</div>
-                        <div class="price">R$ 12,90</div>
+                        <div class="desc">Frutas frescas</div>
                     </div>
                     <div class="drink-item">
                         <div class="icon">🫧</div>
                         <div class="name">Refrigerante</div>
-                        <div class="price">R$ 8,90</div>
+                        <div class="desc">Diversos tipos</div>
                     </div>
                     <div class="drink-item">
                         <div class="icon">💧</div>
                         <div class="name">Água</div>
-                        <div class="price">R$ 5,90</div>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Sobremesas -->
-            <div class="menu-category">
-                <h2>🍰 Sobremesas</h2>
-                <div class="menu-grid">
-                    <div class="menu-item">
-                        <div class="dish">Bolo de Rolo</div>
-                        <div class="description">Bolo tradicional pernambucano</div>
-                        <div class="price">R$ 14,90</div>
-                    </div>
-                    <div class="menu-item">
-                        <div class="dish">Pudim de Leite</div>
-                        <div class="description">Pudim caseiro com calda de caramel</div>
-                        <div class="price">R$ 12,90</div>
-                    </div>
-                    <div class="menu-item">
-                        <span class="tag">especial</span>
-                        <div class="dish">Cartola</div>
-                        <div class="description">Banana caramelizada com queijo</div>
-                        <div class="price">R$ 16,90</div>
+                        <div class="desc">Com e sem gás</div>
                     </div>
                 </div>
             </div>
@@ -418,8 +339,8 @@
     </main>
     
     <footer>
-        <p>© Becoartes 2025 - Rua Harmonia, Vila Madalena, São Paulo</p>
-        <p>WhatsApp: (11) 99999-9999</p>
+        <p>📍 Rua Harmonia, Vila Madalena, São Paulo</p>
+        <p>Estamos no coração do Beco do Batman</p>
     </footer>
 </body>
 </html>
