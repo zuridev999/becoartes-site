@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Vale a pena visitar o Beco do Batman à noite?">
+    <title>Vale a pena visitar o Beco do Batman à noite? - Becoartes</title>
+    <link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500;600;700&family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        :root { --primary: #9d4edd; --secondary: #ffdd00; --bg: #15151a; --text: #ffffff; --text-muted: #9ca3af; }
+        body { font-family: 'Jost', sans-serif; background-color: var(--bg); color: var(--text); }
+        .navbar { padding: 1rem 2rem; display: flex; justify-content: space-between; align-items: center; background: rgba(21, 21, 26, 0.95); backdrop-filter: blur(10px); position: fixed; width: 100%; top: 0; z-index: 100; }
+        .navbar .logo img { height: 40px; }
+        .nav-links { display: flex; gap: 2rem; list-style: none; }
+        .nav-links a { color: var(--text); text-decoration: none; transition: color 0.3s; font-weight: 500; }
+        .nav-links a:hover, .nav-links a.active { color: var(--secondary); }
+        main { padding-top: 80px; max-width: 800px; margin: 0 auto; padding: 100px 20px 60px; }
+        .post-header { text-align: center; margin-bottom: 40px; }
+        .post-header h1 { font-size: 1.8rem; font-family: 'Outfit', sans-serif; font-weight: 800; margin-bottom: 1rem; background: linear-gradient(135deg, var(--text), var(--secondary)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .post-content { line-height: 1.9; font-size: 1.1rem; }
+        .post-content p { margin-bottom: 1.5rem; }
+        .post-content h2 { color: var(--secondary); margin: 2rem 0 1rem; }
+        .cta-box { background: linear-gradient(135deg, rgba(157,78,221,0.3), rgba(255,221,0,0.2)); padding: 20px; border-radius: 15px; margin: 20px 0; text-align: center; }
+        .post-navigation { display: flex; justify-content: space-between; margin-top: 60px; padding-top: 30px; border-top: 1px solid rgba(255,255,255,0.1); }
+        .post-navigation a { color: var(--secondary); text-decoration: none; font-weight: 600; }
+        .back-link { display: inline-block; margin-bottom: 30px; color: var(--text-muted); text-decoration: none; }
+        footer { text-align: center; padding: 40px 20px; border-top: 1px solid rgba(255,255,255,0.05); color: var(--text-muted); font-size: 14px; }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <a href="index.html" class="logo"><img src="https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=375,fit=crop/YrDWL0by9XCkEn61/logo-oficial-becoartes-A1aPgjperPSlqw6v.png" alt="Becoartes"></a>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="cardapio.html">Cardápio</a></li>
+            <li><a href="blog.html">Guia Cultural</a></li>
+            <li><a href="loja.html">Loja</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <a href="blog.html" class="back-link">← Voltar ao Guia Cultural</a>
+        
+        <article>
+            <div class="post-header">
+                <h1>🌙 Vale a pena visitar o Beco do Batman à noite?</h1>
+            </div>
+            
+            <div class="post-content">
+                <p><strong>Sim, vale a pena!</strong> Diferente do que algumas pessoas imaginam, o Beco tem movimento todos os dias, mesmo à noite.</p>
+                
+                <h2>Dia vs Noite</h2>
+                <p>Durante o dia, o passeio é mais focado em observar grafites, tirar fotos e explorar as ruas. À noite, o clima muda e o bairro entra no ritmo mais social e boêmio.</p>
+                <p>Mas uma coisa permanece igual: <strong>sempre tem gente circulando pelo Beco</strong>.</p>
+                
+                <h2>O Beco continua movimentado</h2>
+                <p>Mesmo quando galerias e lojas fecham, a região continua com bastante circulação. Muita gente passa pelo Beco antes de ir para bares, restaurantes ou encontros com amigos.</p>
+                
+                <div class="cta-box">
+                    <h3>🍸 Um bom lugar para começar a noite</h3>
+                    <p>O <strong>Becoartes</strong> funciona todos os dias até as <strong>23h</strong>, garantindo sempre um ponto aberto no Beco.</p>
+                    <p>Muitos fazem o "esquenta" antes de sair pela Vila Madalena, encontrando amigos e tomando algo.</p>
+                </div>
+                
+                <p>É um tipo diferente de experiência, mas ainda muito interessante. Venha descobrir!</p>
+            </div>
+            
+            <div class="post-navigation">
+                <a href="blog-transporte.html">← Anterior</a>
+                <a href="blog.html">Próximo →</a>
+            </div>
+        </article>
+    </main>
+    
+    <footer>
+        <p>📍 Rua Harmonia, Vila Madalena, São Paulo</p>
+    </footer>
+</body>
+</html>
