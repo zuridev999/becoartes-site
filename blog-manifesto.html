@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Manifesto Becoartes - Nossa missão e visão">
+    <title>Manifesto Becoartes - Becoartes</title>
+    <link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500;600;700&family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        :root { --primary: #9d4edd; --secondary: #ffdd00; --bg: #15151a; --text: #ffffff; --text-muted: #9ca3af; }
+        body { font-family: 'Jost', sans-serif; background-color: var(--bg); color: var(--text); }
+        .navbar { padding: 1rem 2rem; display: flex; justify-content: space-between; align-items: center; background: rgba(21, 21, 26, 0.95); backdrop-filter: blur(10px); position: fixed; width: 100%; top: 0; z-index: 100; }
+        .navbar .logo img { height: 40px; }
+        .nav-links { display: flex; gap: 2rem; list-style: none; }
+        .nav-links a { color: var(--text); text-decoration: none; transition: color 0.3s; font-weight: 500; }
+        .nav-links a:hover, .nav-links a.active { color: var(--secondary); }
+        main { padding-top: 80px; max-width: 800px; margin: 0 auto; padding: 100px 20px 60px; }
+        .post-header { text-align: center; margin-bottom: 40px; }
+        .post-header h1 { font-size: 2.5rem; font-family: 'Outfit', sans-serif; font-weight: 800; margin-bottom: 1rem; background: linear-gradient(135deg, var(--text), var(--secondary)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .post-content { line-height: 1.9; font-size: 1.1rem; }
+        .post-content p { margin-bottom: 1.5rem; }
+        .post-navigation { display: flex; justify-content: space-between; margin-top: 60px; padding-top: 30px; border-top: 1px solid rgba(255,255,255,0.1); }
+        .post-navigation a { color: var(--secondary); text-decoration: none; font-weight: 600; }
+        .back-link { display: inline-block; margin-bottom: 30px; color: var(--text-muted); text-decoration: none; }
+        footer { text-align: center; padding: 40px 20px; border-top: 1px solid rgba(255,255,255,0.05); color: var(--text-muted); font-size: 14px; }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <a href="index.html" class="logo"><img src="https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=375,fit=crop/YrDWL0by9XCkEn61/logo-oficial-becoartes-A1aPgjperPSlqw6v.png" alt="Becoartes"></a>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="cardapio.html">Cardápio</a></li>
+            <li><a href="blog.html">Guia Cultural</a></li>
+            <li><a href="loja.html">Loja</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <a href="blog.html" class="back-link">← Voltar ao Guia Cultural</a>
+        
+        <article>
+            <div class="post-header">
+                <h1>Manifesto Becoartes</h1>
+                <p class="post-meta">📅 2026</p>
+            </div>
+            
+            <div class="post-content">
+                <p>O Becoartes nasceu de uma centelha, um acaso divino, um encontro entre destino e coragem. Não foi apenas abrir um espaço, foi erguer um ponto de energia no coração de São Paulo. Um lugar que carrega o mistério de existir contra todas as probabilidades.</p>
+                
+                <p>Nossa raiz não está no presente, mas no desejo de permanecer. O Becoartes não foi feito para ser passageiro: é um traço no tempo, uma história que se prolonga além de nós. Queremos inspirar gerações, deixar marcas que sobrevivam à pressa e ao esquecimento.</p>
+                
+                <p>O Becoartes floresce devagar, como o vinho que respira, como a arte que amadurece, como a vida que se revela. Aqui, tudo é paciência e firmeza: a construção lenta que sustenta o que é verdadeiro.</p>
+                
+                <h3>Nossa Visão</h3>
+                <p>Ser um farol da cultura brasileira para o mundo. Não apenas um restaurante ou bar, mas um lugar que traduz em cada detalhe a autenticidade de um povo, um país, uma alma.</p>
+                
+                <p>Somos caos criativo em movimento. Cada prato é tela, cada drink é obra, cada evento é espetáculo. O Becoartes não repete fórmulas: reinventa, surpreende, provoca.</p>
+                
+                <h3>Hospitalidade</h3>
+                <p>Recebemos turistas como amigos, clientes como família. O sorriso da equipe é tempero, o cuidado é ritual. Aqui, cada gesto é alma servida junto com a comida e a bebida.</p>
+                
+                <h3>Disciplina</h3>
+                <p>Por trás da energia que o cliente sente, existem processos, checklists, disciplina invisível. Regras, contratos e finanças equilibradas são as bases que nos permitem criar com liberdade.</p>
+                
+                <p>O Becoartes existe porque não desistimos de acreditar. Persistimos. Já enfrentamos vazio, incerteza, silêncio. Mas seguimos.</p>
+            </div>
+            
+            <div class="post-navigation">
+                <a href="blog-brasil-em-cada-mordida.html">← Anterior</a>
+                <a href="blog-nome-batman.html">Próximo →</a>
+            </div>
+        </article>
+    </main>
+    
+    <footer>
+        <p>📍 Rua Harmonia, Vila Madalena, São Paulo</p>
+    </footer>
+</body>
+</html>
