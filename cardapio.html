@@ -5,7 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Cardápio Becoartes - Culinária Nordestina">
     <title>Cardápio - Becoartes</title>
-    <link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500;600;700&family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         
@@ -23,102 +24,223 @@
             color: var(--text);
             min-height: 100vh;
         }
+
+        /* Navbar */
+        .navbar {
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(21, 21, 26, 0.95);
+            backdrop-filter: blur(10px);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .navbar .logo img {
+            height: 40px;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+        
+        .nav-links a {
+            color: var(--text);
+            text-decoration: none;
+            transition: color 0.3s;
+            font-weight: 500;
+        }
+        
+        .nav-links a:hover, .nav-links a.active {
+            color: var(--secondary);
+        }
+        
+        main {
+            padding-top: 80px;
+        }
         
         /* Header */
         .header-section {
             text-align: center;
-            padding: 60px 20px;
-            background: linear-gradient(180deg, rgba(157,78,221,0.1) 0%, transparent 100%);
+            padding: 80px 20px 40px;
+            background: linear-gradient(180deg, rgba(157,78,221,0.15) 0%, transparent 100%);
         }
         
         .header-section h1 {
-            font-size: 48px;
-            font-weight: 600;
+            font-size: 64px;
+            font-weight: 800;
+            font-family: 'Outfit', sans-serif;
+            background: linear-gradient(135deg, var(--text), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
             margin-bottom: 10px;
+        }
+        
+        .header-section p {
+            color: var(--text-muted);
+            font-size: 1.2rem;
         }
         
         /* Menu Section */
         .menu-section {
-            max-width: 1000px;
+            max-width: 1200px;
             margin: 0 auto;
-            padding: 0 20px 60px;
+            padding: 40px 20px 60px;
         }
         
         .menu-category {
-            margin-bottom: 50px;
+            margin-bottom: 60px;
         }
         
         .menu-category h2 {
-            font-size: 24px;
-            font-weight: 600;
+            font-size: 28px;
+            font-weight: 700;
             color: var(--secondary);
-            margin-bottom: 20px;
-            padding-bottom: 10px;
-            border-bottom: 1px solid rgba(255,255,255,0.1);
+            margin-bottom: 30px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid rgba(255, 221, 0, 0.3);
+            display: flex;
+            align-items: center;
+            gap: 1rem;
         }
         
         .menu-grid {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 20px;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 25px;
         }
         
         .menu-item {
-            padding: 30px;
+            padding: 25px;
             background: rgba(255,255,255,0.03);
-            border: 1px solid rgba(255,255,255,0.05);
-            border-radius: 12px;
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 16px;
             transition: all 0.3s ease;
-            min-height: 120px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .menu-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            background: var(--primary);
+            opacity: 0;
+            transition: opacity 0.3s;
         }
         
         .menu-item:hover {
             background: rgba(255,255,255,0.06);
-            transform: translateY(-3px);
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(157, 78, 221, 0.15);
         }
         
-        .menu-item span {
+        .menu-item:hover::before {
+            opacity: 1;
+        }
+        
+        .menu-item .dish {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: var(--text);
+        }
+        
+        .menu-item .description {
+            font-size: 14px;
+            color: var(--text-muted);
+            margin-bottom: 12px;
+        }
+        
+        .menu-item .price {
             font-size: 20px;
-            font-weight: 500;
+            font-weight: 700;
+            color: var(--secondary);
+        }
+        
+        .menu-item .tag {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: var(--primary);
+            color: white;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 11px;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+        
+        /* Drinks Grid */
+        .drinks-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 20px;
+        }
+        
+        .drink-item {
+            padding: 20px;
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 12px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+        
+        .drink-item:hover {
+            background: rgba(255,255,255,0.06);
+            transform: scale(1.02);
+        }
+        
+        .drink-item .icon {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+        
+        .drink-item .name {
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+        
+        .drink-item .price {
+            color: var(--secondary);
+            font-weight: 700;
         }
         
         /* CTA Section */
         .cta-section {
             text-align: center;
-            padding: 60px 20px;
-            background: linear-gradient(180deg, transparent 0%, rgba(157,78,221,0.1) 100%);
+            padding: 80px 20px;
+            background: linear-gradient(180deg, transparent 0%, rgba(157,78,221,0.15) 100%);
         }
         
         .cta-button {
             display: inline-block;
-            padding: 16px 40px;
+            padding: 18px 50px;
             background: var(--primary);
             color: white;
             text-decoration: none;
             border-radius: 30px;
-            font-weight: 600;
-            font-size: 16px;
+            font-weight: 700;
+            font-size: 18px;
             transition: all 0.3s ease;
+            box-shadow: 0 5px 20px rgba(157, 78, 221, 0.3);
         }
         
         .cta-button:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 30px rgba(157,78,221,0.3);
-        }
-        
-        /* Responsive */
-        @media (max-width: 768px) {
-            .menu-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .header-section h1 {
-                font-size: 36px;
-            }
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(157,78,221,0.5);
+            background: var(--secondary);
+            color: #000;
         }
         
         /* Footer */
@@ -129,42 +251,175 @@
             color: var(--text-muted);
             font-size: 14px;
         }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header-section h1 {
+                font-size: 42px;
+            }
+            
+            .nav-links {
+                display: none;
+            }
+        }
     </style>
 </head>
 <body>
-    <div class="header-section">
-        <h1>Cardápio</h1>
-    </div>
-    
-    <div class="menu-section">
-        <div class="menu-category">
-            <h2>Principais</h2>
-            <div class="menu-grid">
-                <div class="menu-item"><span>Baião de Dois</span></div>
-                <div class="menu-item"><span>Espeto de Mignon</span></div>
-                <div class="menu-item"><span>Costela no Bafo</span></div>
+    <nav class="navbar">
+        <a href="index.html" class="logo">
+            <img src="https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=375,fit=crop/YrDWL0by9XCkEn61/logo-oficial-becoartes-A1aPgjperPSlqw6v.png" alt="Becoartes">
+        </a>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="cardapio.html" class="active">Cardápio</a></li>
+            <li><a href="beco-do-batman.html">Beco do Batman</a></li>
+            <li><a href="loja.html">Loja</a></li>
+            <li><a href="blog.html">Guia Cultural</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <div class="header-section">
+            <h1>🍽️ Cardápio</h1>
+            <p>Sabores autênticos da culinária nordestina</p>
+        </div>
+        
+        <div class="menu-section">
+            <!-- Pratos Principais -->
+            <div class="menu-category">
+                <h2>🥘 Pratos Principais</h2>
+                <div class="menu-grid">
+                    <div class="menu-item">
+                        <span class="tag">Mais Pedido</span>
+                        <div class="dish">Baião de Dois</div>
+                        <div class="description">Arroz, feijão verde, coalho, bacon e charque</div>
+                        <div class="price">R$ 42,90</div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="dish">Espeto de Mignon</div>
+                        <div class="description">Carnes nobres grelhadas com acompanhamento</div>
+                        <div class="price">R$ 49,90</div>
+                    </div>
+                    <div class="menu-item">
+                        <span class="tag">Especial</span>
+                        <div class="dish">Costela no Bafo</div>
+                        <div class="description">Costela assada por 8h, acompañada de farofa</div>
+                        <div class="price">R$ 69,90</div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="dish">Macaxeira Recheada</div>
+                        <div class="description">Macaxeira com carne seca e queijo</div>
+                        <div class="price">R$ 38,90</div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="dish">Frango Caipira</div>
+                        <div class="description">Frango caipira com arroz de leite</div>
+                        <div class="price">R$ 39,90</div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="dish">Carne de Sol</div>
+                        <div class="description">Carne de sol com batatas e onion rings</div>
+                        <div class="price">R$ 52,90</div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Porções -->
+            <div class="menu-category">
+                <h2>🍟 Porções</h2>
+                <div class="menu-grid">
+                    <div class="menu-item">
+                        <div class="dish">Porção de Bolinho</div>
+                        <div class="description">8 unidades - carne ou queijo</div>
+                        <div class="price">R$ 24,90</div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="dish">Batata Frita</div>
+                        <div class="description">Batata crocante com garlic aioli</div>
+                        <div class="price">R$ 22,90</div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="dish">Mandioca Frita</div>
+                        <div class="description">Mandioca crocante com chimichurri</div>
+                        <div class="price">R$ 19,90</div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="dish">Tábua de Frios</div>
+                        <div class="description">Queijos, embutidos e grapes</div>
+                        <div class="price">R$ 59,90</div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Bebidas -->
+            <div class="menu-category">
+                <h2>🍺 Bebidas</h2>
+                <div class="drinks-grid">
+                    <div class="drink-item">
+                        <div class="icon">🍸</div>
+                        <div class="name">Caipirinha</div>
+                        <div class="price">R$ 18,90</div>
+                    </div>
+                    <div class="drink-item">
+                        <div class="icon">🍺</div>
+                        <div class="name">Cerveja Latão</div>
+                        <div class="price">R$ 12,90</div>
+                    </div>
+                    <div class="drink-item">
+                        <div class="icon">🍷</div>
+                        <div class="name">Vinho Nacional</div>
+                        <div class="price">R$ 28,90</div>
+                    </div>
+                    <div class="drink-item">
+                        <div class="icon">🥤</div>
+                        <div class="name">Suco Natural</div>
+                        <div class="price">R$ 12,90</div>
+                    </div>
+                    <div class="drink-item">
+                        <div class="icon">🫧</div>
+                        <div class="name">Refrigerante</div>
+                        <div class="price">R$ 8,90</div>
+                    </div>
+                    <div class="drink-item">
+                        <div class="icon">💧</div>
+                        <div class="name">Água</div>
+                        <div class="price">R$ 5,90</div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Sobremesas -->
+            <div class="menu-category">
+                <h2>🍰 Sobremesas</h2>
+                <div class="menu-grid">
+                    <div class="menu-item">
+                        <div class="dish">Bolo de Rolo</div>
+                        <div class="description">Bolo tradicional pernambucano</div>
+                        <div class="price">R$ 14,90</div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="dish">Pudim de Leite</div>
+                        <div class="description">Pudim caseiro com calda de caramel</div>
+                        <div class="price">R$ 12,90</div>
+                    </div>
+                    <div class="menu-item">
+                        <span class="tag">especial</span>
+                        <div class="dish">Cartola</div>
+                        <div class="description">Banana caramelizada com queijo</div>
+                        <div class="price">R$ 16,90</div>
+                    </div>
+                </div>
             </div>
         </div>
         
-        <div class="menu-category">
-            <h2>Bebidas</h2>
-            <div class="menu-grid">
-                <div class="menu-item"><span>VIRTUAL</span></div>
-                <div class="menu-item"><span>CAIPIRINHA</span></div>
-                <div class="menu-item"><span>CERVEJA LATÃO</span></div>
-                <div class="menu-item"><span>ÁGUA</span></div>
-                <div class="menu-item"><span>REFRIGERANTE</span></div>
-                <div class="menu-item"><span>SUCO</span></div>
-            </div>
+        <div class="cta-section">
+            <a href="#reservas" class="cta-button">Reserve sua mesa</a>
         </div>
-    </div>
-    
-    <div class="cta-section">
-        <a href="https://www.becoartes.com/contato" class="cta-button">Reserve sua mesa</a>
-    </div>
+    </main>
     
     <footer>
-        <p>© Becoartes 2025</p>
+        <p>© Becoartes 2025 - Rua Harmonia, Vila Madalena, São Paulo</p>
+        <p>WhatsApp: (11) 99999-9999</p>
     </footer>
 </body>
 </html>

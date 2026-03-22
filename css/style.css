@@ -511,3 +511,154 @@ body {
     -webkit-text-fill-color: transparent;
     background-clip: text;
 }
+
+/* Galeria Section */
+.galeria {
+    padding: 5rem 2rem;
+    text-align: center;
+    background: linear-gradient(180deg, transparent, rgba(157, 78, 221, 0.1), transparent);
+}
+
+.galeria .section-subtitle {
+    color: var(--color-text-muted);
+    font-size: 1.1rem;
+    margin-bottom: 3rem;
+}
+
+.galeria-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.galeria-item {
+    padding: 1.5rem;
+    border-radius: 20px;
+    background: var(--color-surface);
+    backdrop-filter: blur(10px);
+    transition: var(--transition);
+    cursor: pointer;
+}
+
+.galeria-item:hover {
+    transform: translateY(-10px) scale(1.02);
+    box-shadow: 0 25px 50px rgba(157, 78, 221, 0.3);
+}
+
+.galeria-placeholder {
+    width: 100%;
+    height: 150px;
+    border-radius: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 3rem;
+    margin-bottom: 1rem;
+}
+
+.galeria-item h4 {
+    color: var(--color-text);
+    margin-bottom: 0.5rem;
+    font-size: 1.2rem;
+}
+
+.galeria-item p {
+    color: var(--color-text-muted);
+    font-size: 0.9rem;
+}
+
+.galeria-info {
+    margin-top: 3rem;
+    color: var(--color-text-muted);
+    font-size: 1rem;
+}
+
+/* Stats Section Animation */
+.stats-section {
+    display: flex;
+    justify-content: center;
+    gap: 4rem;
+    padding: 4rem 2rem;
+    flex-wrap: wrap;
+}
+
+.stat-card {
+    text-align: center;
+    padding: 2rem 3rem;
+    border-radius: 20px;
+    background: var(--color-surface);
+    backdrop-filter: blur(10px);
+    transition: var(--transition);
+}
+
+.stat-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 40px rgba(157, 78, 221, 0.2);
+}
+
+.stat-card h2 {
+    font-size: 3.5rem;
+    font-weight: 800;
+    color: var(--color-secondary);
+}
+
+.stat-card span {
+    font-size: 1.5rem;
+    color: var(--color-secondary);
+    margin-left: 0.2rem;
+}
+
+.stat-card p {
+    color: var(--color-text-muted);
+    margin-top: 0.5rem;
+    font-size: 1rem;
+}
+
+/* Testimonials */
+.testimonials {
+    padding: 5rem 2rem;
+    text-align: center;
+}
+
+.reviews-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    max-width: 1000px;
+    margin: 3rem auto;
+}
+
+.review-card {
+    padding: 2rem;
+    border-radius: 20px;
+    background: var(--color-surface);
+    backdrop-filter: blur(10px);
+    transition: var(--transition);
+}
+
+.review-card:hover {
+    transform: translateY(-5px);
+}
+
+.stars {
+    color: var(--color-secondary);
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.review-card p {
+    font-style: italic;
+    color: var(--color-text-muted);
+    margin-bottom: 1rem;
+}
+
+.review-card h4 {
+    color: var(--color-primary);
+}
+
+.google-reviews {
+    margin-top: 2rem;
+    color: var(--color-text-muted);
+}
