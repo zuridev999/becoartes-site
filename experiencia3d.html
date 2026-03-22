@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Becoartes - Experiência 3D Imersiva">
+    <title>Experiência 3D - Becoartes</title>
+    <script src="https://unpkg.com/@splinetool/viewer@1.0.54/build/spline-viewer.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800;900&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        :root {
+            --color-bg: #0a0a0f;
+            --color-primary: #9d4edd;
+            --color-secondary: #ffdd00;
+            --color-cyan: #00f5ff;
+            --color-pink: #ff006e;
+            --color-orange: #ff9500;
+        }
+        
+        body {
+            font-family: 'Outfit', sans-serif;
+            background: var(--color-bg);
+            color: white;
+            overflow: hidden;
+            cursor: none;
+        }
+        
+        /* Custom Cursor */
+        .cursor {
+            width: 20px;
+            height: 20px;
+            border: 2px solid var(--color-cyan);
+            border-radius: 50%;
+            position: fixed;
+            pointer-events: none;
+            z-index: 9999;
+            transition: transform 0.1s ease;
+            mix-blend-mode: difference;
+        }
+        
+        .cursor-dot {
+            width: 6px;
+            height: 6px;
+            background: var(--color-secondary);
+            border-radius: 50%;
+            position: fixed;
+            pointer-events: none;
+            z-index: 9999;
+        }
+        
+        /* Trail effect */
+        .cursor-trail {
+            position: fixed;
+            width: 10px;
+            height: 10px;
+            background: var(--color-primary);
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 9998;
+            opacity: 0.5;
+            animation: trail 0.5s ease-out forwards;
+        }
+        
+        @keyframes trail {
+            to {
+                transform: scale(0);
+                opacity: 0;
+            }
+        }
+        
+        /* Hero Section */
+        .hero3d {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+        
+        .hero3d::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 20% 80%, rgba(157, 78, 221, 0.3) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(255, 221, 0, 0.2) 0%, transparent 50%),
+                radial-gradient(circle at 50% 50%, rgba(0, 245, 255, 0.1) 0%, transparent 70%);
+            animation: pulse 8s ease-in-out infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { opacity: 0.5; }
+            50% { opacity: 1; }
+        }
+        
+        .spline-container {
+            width: 100%;
+            height: 80%;
+            position: relative;
+            z-index: 1;
+        }
+        
+        spline-viewer {
+            width: 100%;
+            height: 100%;
+        }
+        
+        .hero-content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            z-index: 2;
+            pointer-events: none;
+        }
+        
+        .hero-content h1 {
+            font-size: 5rem;
+            font-weight: 900;
+            background: linear-gradient(135deg, #fff 0%, var(--color-cyan) 50%, var(--color-pink) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-shadow: 0 0 50px rgba(0, 245, 255, 0.5);
+            animation: glitch 3s infinite;
+        }
+        
+        @keyframes glitch {
+            0%, 90%, 100% { transform: translate(0); }
+            92% { transform: translate(-5px, 2px); }
+            94% { transform: translate(5px, -2px); }
+            96% { transform: translate(-3px, -1px); }
+            98% { transform: translate(3px, 1px); }
+        }
+        
+        .hero-content p {
+            font-size: 1.5rem;
+            color: rgba(255, 255, 255, 0.8);
+            margin-top: 1rem;
+            letter-spacing: 0.2em;
+        }
+        
+        /* Floating elements */
+        .float-element {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(60px);
+            animation: float 10s ease-in-out infinite;
+        }
+        
+        .float-1 {
+            width: 300px;
+            height: 300px;
+            background: var(--color-primary);
+            top: 10%;
+            left: 10%;
+            animation-delay: 0s;
+        }
+        
+        .float-2 {
+            width: 250px;
+            height: 250px;
+            background: var(--color-secondary);
+            bottom: 20%;
+            right: 15%;
+            animation-delay: -3s;
+        }
+        
+        .float-3 {
+            width: 200px;
+            height: 200px;
+            background: var(--color-cyan);
+            top: 50%;
+            right: 30%;
+            animation-delay: -6s;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            33% { transform: translate(30px, -30px) scale(1.1); }
+            66% { transform: translate(-20px, 20px) scale(0.9); }
+        }
+        
+        /* Menu */
+        .menu3d {
+            position: fixed;
+            top: 2rem;
+            right: 2rem;
+            z-index: 100;
+            display: flex;
+            gap: 1rem;
+        }
+        
+        .menu3d a {
+            color: white;
+            text-decoration: none;
+            padding: 0.8rem 1.5rem;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 30px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.3s ease;
+            font-weight: 600;
+        }
+        
+        .menu3d a:hover {
+            background: var(--color-primary);
+            border-color: var(--color-primary);
+            transform: scale(1.05);
+        }
+        
+        /* Logo */
+        .logo3d {
+            position: fixed;
+            top: 2rem;
+            left: 2rem;
+            z-index: 100;
+        }
+        
+        .logo3d img {
+            height: 50px;
+        }
+        
+        /* Instructions */
+        .instructions {
+            position: fixed;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 0.9rem;
+            z-index: 100;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .instructions span {
+            display: inline-block;
+            width: 30px;
+            height: 30px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            text-align: center;
+            line-height: 30px;
+            font-size: 0.8rem;
+        }
+        
+        /* Interactive 3D Cards */
+        .cards-container {
+            position: fixed;
+            bottom: 5rem;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 2rem;
+            z-index: 10;
+        }
+        
+        .card3d {
+            width: 150px;
+            height: 200px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            perspective: 1000px;
+        }
+        
+        .card3d:hover {
+            transform: translateY(-20px) rotateX(10deg);
+            background: rgba(255, 255, 255, 0.1);
+            border-color: var(--color-cyan);
+            box-shadow: 0 20px 40px rgba(0, 245, 255, 0.3);
+        }
+        
+        .card3d .icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+        
+        .card3d h4 {
+            font-size: 0.9rem;
+            color: var(--color-cyan);
+        }
+    </style>
+</head>
+<body>
+    <!-- Custom Cursor -->
+    <div class="cursor"></div>
+    <div class="cursor-dot"></div>
+    
+    <!-- Floating Background Elements -->
+    <div class="float-element float-1"></div>
+    <div class="float-element float-2"></div>
+    <div class="float-element float-3"></div>
+    
+    <!-- Logo -->
+    <div class="logo3d">
+        <a href="index.html">
+            <img src="https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=375,fit=crop/YrDWL0by9XCkEn61/logo-oficial-becoartes-A1aPgjperPSlqw6v.png" alt="Becoartes">
+        </a>
+    </div>
+    
+    <!-- Menu -->
+    <nav class="menu3d">
+        <a href="index.html">Home</a>
+        <a href="cardapio.html">Cardápio</a>
+        <a href="loja.html">Loja</a>
+        <a href="blog.html">Guia Cultural</a>
+    </nav>
+    
+    <!-- Hero 3D -->
+    <section class="hero3d">
+        <div class="spline-container">
+            <!-- Spline Viewer - Using a community scene -->
+            <spline-viewer url="https://prod.spline.design/6Wq1Q7YGyM-iab9i/scene.splinecode"></spline-viewer>
+        </div>
+        
+        <div class="hero-content">
+            <h1>BECOARTES</h1>
+            <p>Uma experiência imersiva</p>
+        </div>
+        
+        <!-- Interactive Cards -->
+        <div class="cards-container">
+            <div class="card3d">
+                <span class="icon">🎨</span>
+                <h4>Arte</h4>
+            </div>
+            <div class="card3d">
+                <span class="icon">🍽️</span>
+                <h4>Gastronomia</h4>
+            </div>
+            <div class="card3d">
+                <span class="icon">🎵</span>
+                <h4>Cultura</h4>
+            </div>
+            <div class="card3d">
+                <span class="icon">📍</span>
+                <h4>Visite</h4>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Instructions -->
+    <div class="instructions">
+        <span>🖱️</span> Mova o mouse para interagir
+    </div>
+    
+    <script>
+        // Custom Cursor
+        const cursor = document.querySelector('.cursor');
+        const cursorDot = document.querySelector('.cursor-dot');
+        let mouseX = 0, mouseY = 0;
+        let cursorX = 0, cursorY = 0;
+        
+        document.addEventListener('mousemove', (e) => {
+            mouseX = e.clientX;
+            mouseY = e.clientY;
+            
+            // Create trail
+            const trail = document.createElement('div');
+            trail.className = 'cursor-trail';
+            trail.style.left = mouseX + 'px';
+            trail.style.top = mouseY + 'px';
+            document.body.appendChild(trail);
+            setTimeout(() => trail.remove(), 500);
+        });
+        
+        // Smooth cursor movement
+        function animateCursor() {
+            cursorX += (mouseX - cursorX) * 0.1;
+            cursorY += (mouseY - cursorY) * 0.1;
+            
+            cursor.style.left = cursorX - 10 + 'px';
+            cursor.style.top = cursorY - 10 + 'px';
+            cursorDot.style.left = mouseX - 3 + 'px';
+            cursorDot.style.top = mouseY - 3 + 'px';
+            
+            requestAnimationFrame(animateCursor);
+        }
+        animateCursor();
+        
+        // 3D Tilt for cards
+        document.querySelectorAll('.card3d').forEach(card => {
+            card.addEventListener('mousemove', (e) => {
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                const centerX = rect.width / 2;
+                const centerY = rect.height / 2;
+                
+                const rotateX = (y - centerY) / 10;
+                const rotateY = (centerX - x) / 10;
+                
+                card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-20px)`;
+            });
+            
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) translateY(0)';
+            });
+        });
+        
+        // Click effect
+        document.addEventListener('click', () => {
+            cursor.style.transform = 'scale(0.5)';
+            setTimeout(() => cursor.style.transform = 'scale(1)', 100);
+        });
+        
+        console.log('🎨 Becoartes 3D Experience Loaded');
+    </script>
+</body>
+</html>
