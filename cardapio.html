@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Cardápio Becoartes - Culinária Nordestina">
+    <meta name="description" content="Cardápio Becoartes - Culinária com arte">
     <title>Cardápio - Becoartes</title>
     <link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500;600;700&family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
@@ -53,9 +53,7 @@
             font-weight: 500;
         }
         
-        .nav-links a:hover, .nav-links a.active {
-            color: var(--secondary);
-        }
+        .nav-links a:hover, .nav-links a.active { color: var(--secondary); }
         
         main { padding-top: 80px; }
         
@@ -73,129 +71,73 @@
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
-            margin-bottom: 10px;
         }
         
-        .header-section p { color: var(--text-muted); font-size: 1.2rem; }
+        .header-section p { color: var(--text-muted); font-size: 1.2rem; margin-top: 10px; }
         
-        .menu-section { max-width: 1000px; margin: 0 auto; padding: 40px 20px 60px; }
+        .menu-section { max-width: 900px; margin: 0 auto; padding: 40px 20px 60px; }
         
-        .menu-category { margin-bottom: 60px; }
+        .menu-category { margin-bottom: 50px; }
         
         .menu-category h2 {
-            font-size: 32px;
+            font-size: 28px;
             font-weight: 700;
             color: var(--secondary);
             margin-bottom: 20px;
-            padding-bottom: 15px;
+            padding-bottom: 10px;
             border-bottom: 2px solid rgba(255, 221, 0, 0.3);
         }
         
-        .menu-category .subtitle {
+        .menu-category .cat-desc {
             color: var(--text-muted);
-            font-size: 1.1rem;
-            margin-bottom: 30px;
             font-style: italic;
+            margin-bottom: 25px;
         }
         
-        .prato-especial {
-            background: rgba(255,255,255,0.05);
-            border: 1px solid rgba(255,255,255,0.1);
-            border-radius: 20px;
-            padding: 30px;
-            margin-bottom: 30px;
-        }
+        .item-list { list-style: none; }
         
-        .prato-especial h3 {
-            font-size: 1.8rem;
-            color: var(--primary);
-            margin-bottom: 15px;
-        }
-        
-        .prato-especial .descricao {
-            color: var(--text-muted);
-            line-height: 1.8;
-            font-size: 1.1rem;
-        }
-        
-        .prato-especial .tag {
-            display: inline-block;
-            background: var(--secondary);
-            color: #000;
-            padding: 8px 20px;
-            border-radius: 25px;
-            font-weight: 700;
-            margin-top: 15px;
-            font-size: 0.9rem;
-        }
-        
-        .drinks-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-            gap: 25px;
-        }
-        
-        .drink-item {
-            padding: 25px;
+        .item-list li {
+            padding: 20px;
             background: rgba(255,255,255,0.03);
             border: 1px solid rgba(255,255,255,0.08);
-            border-radius: 16px;
-            text-align: center;
+            border-radius: 12px;
+            margin-bottom: 15px;
             transition: all 0.3s ease;
         }
         
-        .drink-item:hover {
+        .item-list li:hover {
             background: rgba(255,255,255,0.06);
-            transform: scale(1.02);
+            transform: translateX(5px);
         }
         
-        .drink-item .icon { font-size: 3rem; margin-bottom: 15px; }
-        
-        .drink-item .name {
-            font-weight: 700;
+        .item-list .item-name {
             font-size: 1.2rem;
+            font-weight: 600;
             margin-bottom: 8px;
         }
         
-        .drink-item .desc {
+        .item-list .item-desc {
             color: var(--text-muted);
             font-size: 0.95rem;
         }
         
-        .porcoes-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-            gap: 25px;
+        .destaque {
+            border-left: 4px solid var(--secondary);
+            background: rgba(255, 221, 0, 0.05);
         }
         
-        .porcao-item {
-            padding: 25px;
-            background: rgba(255,255,255,0.03);
-            border: 1px solid rgba(255,255,255,0.08);
-            border-radius: 16px;
-            transition: all 0.3s ease;
+        .destaque .tag {
+            display: inline-block;
+            background: var(--secondary);
+            color: #000;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            margin-top: 10px;
         }
         
-        .porcao-item:hover {
-            background: rgba(255,255,255,0.06);
-            transform: translateY(-5px);
-        }
-        
-        .porcao-item h4 {
-            color: var(--text);
-            font-size: 1.3rem;
-            margin-bottom: 10px;
-        }
-        
-        .porcao-item p {
-            color: var(--text-muted);
-        }
-        
-        .cta-section {
-            text-align: center;
-            padding: 80px 20px;
-            background: linear-gradient(180deg, transparent 0%, rgba(157,78,221,0.15) 100%);
-        }
+        .cta-section { text-align: center; padding: 60px 20px; }
         
         .cta-button {
             display: inline-block;
@@ -207,23 +149,14 @@
             font-weight: 700;
             font-size: 18px;
             transition: all 0.3s ease;
-            box-shadow: 0 5px 20px rgba(157, 78, 221, 0.3);
         }
         
         .cta-button:hover {
             transform: translateY(-3px);
             box-shadow: 0 15px 40px rgba(157,78,221,0.5);
-            background: var(--secondary);
-            color: #000;
         }
         
-        footer {
-            text-align: center;
-            padding: 40px 20px;
-            border-top: 1px solid rgba(255,255,255,0.05);
-            color: var(--text-muted);
-            font-size: 14px;
-        }
+        footer { text-align: center; padding: 40px 20px; border-top: 1px solid rgba(255,255,255,0.05); color: var(--text-muted); }
         
         @media (max-width: 768px) {
             .header-section h1 { font-size: 42px; }
@@ -255,86 +188,80 @@
             <!-- Porções -->
             <div class="menu-category">
                 <h2>🥟 Porções</h2>
-                <p class="subtitle">Porções feitas sob medida para seu gosto</p>
-                <div class="porcoes-grid">
-                    <div class="porcao-item">
-                        <h4>Porção de Bolinho</h4>
-                        <p>Servido com molho especial</p>
-                    </div>
-                    <div class="porcao-item">
-                        <h4>Batata Frita</h4>
-                        <p>Batata crocante</p>
-                    </div>
-                    <div class="porcao-item">
-                        <h4>Mandioca Frita</h4>
-                        <p>Com chimichurri</p>
-                    </div>
-                    <div class="porcao-item">
-                        <h4>Tábua de Frios</h4>
-                        <p>Queijos e embutidos</p>
-                    </div>
-                </div>
+                <p class="cat-desc">Porções feitas sob medida para seu gosto</p>
+                <ul class="item-list">
+                    <li>
+                        <div class="item-name">Porção de Bolinho</div>
+                        <div class="item-desc">Servido com molho especial</div>
+                    </li>
+                    <li>
+                        <div class="item-name">Batata Frita</div>
+                        <div class="item-desc">Crocante e saborosa</div>
+                    </li>
+                    <li>
+                        <div class="item-name">Mandioca Frita</div>
+                        <div class="item-desc">Com chimichurri</div>
+                    </li>
+                    <li>
+                        <div class="item-name">Tábua de Frios</div>
+                        <div class="item-desc">Queijos e embutidos selecionados</div>
+                    </li>
+                </ul>
             </div>
             
             <!-- Pratos Especiais -->
             <div class="menu-category">
                 <h2>🍖 Pratos Especiais</h2>
-                <p class="subtitle">Preparados com o melhor dos sabores e um toque de arte</p>
-                
-                <div class="prato-especial">
-                    <h3>🥘 Feijoada aos fins de semana</h3>
-                    <p class="descricao">"Todo final de semana, a tradição da feijoada ganha um toque especial no Becoartes. Prepare-se para saborear essa iguaria brasileira, feita com ingredientes frescos e tempero caseiro, para deixar o seu fim de semana ainda mais saboroso."</p>
-                    <span class="tag">Sábados e Domingos</span>
-                </div>
-                
-                <div class="prato-especial">
-                    <h3>🥬 Veggie Burguer Becoartes</h3>
-                    <p class="descricao">"Nosso Veggie Burguer Becoartes é pra todo mundo que ama comer bem, com consciência e muito sabor! Feito com um blend artesanal de feijão temperado, servido no pão de brioche macio e finalizado com acompanhamentos que equilibram textura e frescor, esse burger é leve, suculento e 100% cheio de personalidade."</p>
-                    <span class="tag">Vegetariano</span>
-                </div>
+                <p class="cat-desc">Preparados com o melhor dos sabores e um toque de arte</p>
+                <ul class="item-list">
+                    <li class="destaque">
+                        <div class="item-name">🥘 Feijoada</div>
+                        <div class="item-desc">Todo final de semana, a tradição da feijoada ganha um toque especial no Becoartes. Feita com ingredientes frescos e tempero caseiro.</div>
+                        <span class="tag">Sábados e Domingos</span>
+                    </li>
+                    <li class="destaque">
+                        <div class="item-name">🥬 Veggie Burguer Becoartes</div>
+                        <div class="item-desc">Blend artesanal de feijão temperado, servido no pão de brioche macio. 100% cheio de personalidade.</div>
+                        <span class="tag">Vegetariano</span>
+                    </li>
+                </ul>
             </div>
             
             <!-- Bebidas -->
             <div class="menu-category">
                 <h2>🍺 Bebidas</h2>
-                <p class="subtitle">O melhor do mundo das cervejas e drinks</p>
-                <div class="drinks-grid">
-                    <div class="drink-item">
-                        <div class="icon">🍸</div>
-                        <div class="name">Caipirinha</div>
-                        <div class="desc">Tradicional brasileira</div>
-                    </div>
-                    <div class="drink-item">
-                        <div class="icon">🍺</div>
-                        <div class="name">Cerveja Latão</div>
-                        <div class="desc">Gelada e trincando</div>
-                    </div>
-                    <div class="drink-item">
-                        <div class="icon">🍷</div>
-                        <div class="name">Vinho Nacional</div>
-                        <div class="desc">Seleção brasileira</div>
-                    </div>
-                    <div class="drink-item">
-                        <div class="icon">🥤</div>
-                        <div class="name">Suco Natural</div>
-                        <div class="desc">Frutas frescas</div>
-                    </div>
-                    <div class="drink-item">
-                        <div class="icon">🫧</div>
-                        <div class="name">Refrigerante</div>
-                        <div class="desc">Diversos tipos</div>
-                    </div>
-                    <div class="drink-item">
-                        <div class="icon">💧</div>
-                        <div class="name">Água</div>
-                        <div class="desc">Com e sem gás</div>
-                    </div>
-                </div>
+                <p class="cat-desc">O melhor do mundo das cervejas e drinks</p>
+                <ul class="item-list">
+                    <li>
+                        <div class="item-name">🍸 Caipirinha</div>
+                        <div class="item-desc">Tradicional brasileira</div>
+                    </li>
+                    <li>
+                        <div class="item-name">🍺 Cerveja</div>
+                        <div class="item-desc">Gelada e trincando</div>
+                    </li>
+                    <li>
+                        <div class="item-name">🍷 Vinho</div>
+                        <div class="item-desc">Seleção brasileira</div>
+                    </li>
+                    <li>
+                        <div class="item-name">🥤 Suco Natural</div>
+                        <div class="item-desc">Frutas frescas</div>
+                    </li>
+                    <li>
+                        <div class="item-name">🫧 Refrigerante</div>
+                        <div class="item-desc">Diversos tipos</div>
+                    </li>
+                    <li>
+                        <div class="item-name">💧 Água</div>
+                        <div class="item-desc">Com e sem gás</div>
+                    </li>
+                </ul>
             </div>
         </div>
         
         <div class="cta-section">
-            <a href="#reservas" class="cta-button">Reserve sua mesa</a>
+            <a href="https://wa.me/5511999999999" class="cta-button">Reserve sua mesa</a>
         </div>
     </main>
     
